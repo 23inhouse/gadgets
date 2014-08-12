@@ -14,5 +14,5 @@ When(/^I am signed in as "(.*?)"$/) do |email|
 end
 
 When(/^I sign out$/) do
-  find(:link, 'Sign out').click
+  find(:link, 'Logout').click
 end
