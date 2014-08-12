@@ -1,0 +1,11 @@
+<%= yield %>
+<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $('.carousel').hide();
+    $('.carousel').slick({
+      setting-name: 'setting-value'
+    });
+  });
+<% end %>

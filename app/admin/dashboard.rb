@@ -1,33 +1,36 @@
-ActiveAdmin.register_page "Dashboard" do
+ActiveAdmin.register_page 'Dashboard' do
 
-  menu priority: 1, label: proc{ I18n.t("active_admin.dashboard") }
+  menu priority: 1, label: 'Carousel'
 
-  content title: proc{ I18n.t("active_admin.dashboard") } do
-    div class: "blank_slate_container", id: "dashboard_default_message" do
-      span class: "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+  content title: 'Carousel' do
+
+    div do
+      input type: 'button', id: 'slick-prev', value: 'Previous'
+      input type: 'button', id: 'slick-next', value: 'Next'
+    end
+    div class: 'carousel' do
+      GadgetImage.all.each do |gadget_image|
+        if gadget_image.image.present?
+          div do
+            image_tag(gadget_image.image.normal.url)
+          end
+        end
       end
     end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
+    link rel: 'stylesheet', type: 'text/css', href: '//cdn.jsdelivr.net/jquery.slick/1.3.7/slick.css'
+    script type: 'text/javascript',  src: '//cdn.jsdelivr.net/jquery.slick/1.3.7/slick.min.js'
 
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-  end # content
+    script type: 'text/javascript' do
+      %(
+        $(document).ready(function(){
+          $('.carousel').slick({
+            prevArrow: '#slick-prev',
+            nextArrow: '#slick-next',
+            infinite: false
+          });
+        });
+      ).html_safe
+    end
+  end
 end
