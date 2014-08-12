@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'spring', group: :development
 
 gem 'devise'
+gem 'activeadmin', github: 'activeadmin/active_admin'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
