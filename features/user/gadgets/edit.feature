@@ -13,3 +13,10 @@ Feature: Adding a gadget
      When I change the gadget's name to "iPhone 4S"
      Then I go to the gadget page
       And there is a gadget called "iPhone 4S"
+
+  Scenario: Editing a gadget with multiple images
+    Given I am on the edit gadget page
+     When I add an image
+      And I add an image
+      And I update the gadget
+     Then the gadget has 2 images
