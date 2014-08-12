@@ -8,6 +8,7 @@ gem 'spring', group: :development
 
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin/active_admin'
+gem 'carrierwave'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
