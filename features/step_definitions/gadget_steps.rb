@@ -8,8 +8,12 @@ When(/^I change the gadget's name to "(.*?)"$/) do |name|
   find(:button, 'Update Gadget').click
 end
 
-When(/^there is a "(.*?)" gadget$/) do |name|
-  Gadget.create!(name: name)
+When(/^there is a "(.*?)" gadget(?: with (\d+) images?)?$/) do |name, count|
+  gadget = Gadget.create!(name: name)
+  count.to_i.times do
+    gadget_image = gadget.gadget_images.build(image: "#{Rails.root}spec/fixtures/image.png")
+    gadget_image.save!
+  end
 end
 
 When(/^I add an image$/) do

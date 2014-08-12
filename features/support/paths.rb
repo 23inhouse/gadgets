@@ -8,6 +8,8 @@ module NavigationHelpers
 
     when /the add gadget page/
       '/gadgets/new'
+    when /the carousel page/
+      '/dashboard'
     when /the edit gadget page/
       '/gadgets/' + id_for(Gadget.last) + '/edit'
     when /the gadget page/
